@@ -26,7 +26,7 @@ public class MainPageAdapter extends FragmentStatePagerAdapter {
     }};
 
     /**
-     * TODO
+     * Initiates the class instance.
      *
      * @param context The parent context state.
      * @param manager The fragment manager.
@@ -44,7 +44,6 @@ public class MainPageAdapter extends FragmentStatePagerAdapter {
      */
     @Override
     public CharSequence getPageTitle(int index) {
-        System.out.print(ctx.getString(tabs.get(index).first));
         return ctx.getString(tabs.get(index).first);
     }
 
