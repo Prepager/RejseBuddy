@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
+import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,6 @@ public class ContactsFragment extends Fragment {
 
     /**
      * The list of app contacts.
-     *
-     * @var List<Contact>
      */
     private List<Contact> contacts = new ArrayList<>();
 
@@ -66,16 +65,16 @@ public class ContactsFragment extends Fragment {
      */
     private void loadContacts() {
         // TODO: Adds example contacts to list.
-        contacts.add(new Contact("Kontakt 1", "Adresse 1"));
-        contacts.add(new Contact("Kontakt 2", "Adresse 2"));
-        contacts.add(new Contact("Kontakt 3", "Adresse 3"));
-        contacts.add(new Contact("Kontakt 4", "Adresse 4"));
-        contacts.add(new Contact("Kontakt 5", "Adresse 5"));
-        contacts.add(new Contact("Kontakt 6", "Adresse 6"));
-        contacts.add(new Contact("Kontakt 7", "Adresse 7"));
-        contacts.add(new Contact("Kontakt 8", "Adresse 8"));
-        contacts.add(new Contact("Kontakt 9", "Adresse 9"));
-        contacts.add(new Contact("Kontakt 10", "Adresse 10"));
+        contacts.add(new Contact(1, "Kontakt 1", "Adresse 1"));
+        contacts.add(new Contact(2, "Kontakt 2", "Adresse 2"));
+        contacts.add(new Contact(3, "Kontakt 3", "Adresse 3"));
+        contacts.add(new Contact(4, "Kontakt 4", "Adresse 4"));
+        contacts.add(new Contact(5, "Kontakt 5", "Adresse 5"));
+        contacts.add(new Contact(6, "Kontakt 6", "Adresse 6"));
+        contacts.add(new Contact(7, "Kontakt 7", "Adresse 7"));
+        contacts.add(new Contact(8, "Kontakt 8", "Adresse 8"));
+        contacts.add(new Contact(9, "Kontakt 9", "Adresse 9"));
+        contacts.add(new Contact(10, "Kontakt 10", "Adresse 10"));
     }
 
 }

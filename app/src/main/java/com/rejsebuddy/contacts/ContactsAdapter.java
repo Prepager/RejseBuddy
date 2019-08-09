@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
+import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.List;
 
@@ -15,8 +16,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
     /**
      * The list of passed contacts.
-     *
-     * @var List<Contact>
      */
     private List<Contact> contacts;
 
@@ -74,15 +73,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
         /**
          * The contact name text element.
-         *
-         * @var TextView
          */
         public TextView name;
 
         /**
          * The contact address text element.
-         *
-         * @var TextView
          */
         public TextView address;
 
