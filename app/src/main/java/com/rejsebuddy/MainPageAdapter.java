@@ -34,7 +34,7 @@ public class MainPageAdapter extends FragmentStatePagerAdapter {
      * @param manager The fragment manager.
      */
     public MainPageAdapter(Context context, FragmentManager manager) {
-        super(manager);
+        super(manager, 0);
         ctx = context;
     }
 

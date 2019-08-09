@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/settings_data">
+
+        <Preference app:key="import_data"
+            app:icon="@drawable/ic_get_app_black_24dp"
+            app:title="@string/settings_import_data"
+            app:summary="@string/settings_import_data_dec"/>
+
+        <Preference app:key="delete_data"
+            app:icon="@drawable/ic_delete_forever_black_24dp"
+            app:title="@string/settings_delete_data"
+            app:summary="@string/settings_delete_data_dec"/>
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>

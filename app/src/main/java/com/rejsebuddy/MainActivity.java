@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
-import com.rejsebuddy.storage.Database;
+import com.rejsebuddy.storage.AppDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instantiate the application database.
-        Database.setInstance(this);
+        AppDatabase.getInstance(this);
 
         // Connect page adapter to view element.
         ViewPager pager = findViewById(R.id.pager);
