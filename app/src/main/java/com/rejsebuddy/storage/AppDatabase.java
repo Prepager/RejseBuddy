@@ -46,22 +46,13 @@ public abstract class AppDatabase extends RoomDatabase {
     /**
      * TODO
      */
-    public static AppDatabase getInstance() {
-        return AppDatabase.instance;
-    }
-
-    /**
-     * TODO
-     */
     public static AppDatabase getInstance(Context ctx) {
         // TODO
         if (AppDatabase.instance == null) {
             // TODO
-            AppDatabase.instance = Room.databaseBuilder(
-                ctx.getApplicationContext(),
-                AppDatabase.class,
-                "rejsebuddy"
-            ).enableMultiInstanceInvalidation().build();
+            AppDatabase.instance = Room.databaseBuilder(ctx, AppDatabase.class,"rejsebuddy")
+                .enableMultiInstanceInvalidation()
+                .build();
         }
 
         //

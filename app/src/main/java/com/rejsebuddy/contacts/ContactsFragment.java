@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
+import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.ArrayList;
@@ -57,24 +58,35 @@ public class ContactsFragment extends Fragment {
         list.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         // Populate the contacts list.
-        loadContacts();
+        new ContactsFetcher(this.contacts).start();
     }
 
     /**
-     * Populate the contacts list.
+     * Contacts data fetcher class.
      */
-    private void loadContacts() {
-        // TODO: Adds example contacts to list.
-        contacts.add(new Contact(1, "Kontakt 1", "Adresse 1"));
-        contacts.add(new Contact(2, "Kontakt 2", "Adresse 2"));
-        contacts.add(new Contact(3, "Kontakt 3", "Adresse 3"));
-        contacts.add(new Contact(4, "Kontakt 4", "Adresse 4"));
-        contacts.add(new Contact(5, "Kontakt 5", "Adresse 5"));
-        contacts.add(new Contact(6, "Kontakt 6", "Adresse 6"));
-        contacts.add(new Contact(7, "Kontakt 7", "Adresse 7"));
-        contacts.add(new Contact(8, "Kontakt 8", "Adresse 8"));
-        contacts.add(new Contact(9, "Kontakt 9", "Adresse 9"));
-        contacts.add(new Contact(10, "Kontakt 10", "Adresse 10"));
+    class ContactsFetcher extends Thread {
+
+        /**
+         * Reference to the contacts list.
+         */
+        List<Contact> contacts;
+
+        /**
+         * Constructor to retrieve the contacts list.
+         *
+         * @param contacts The contacts list reference.
+         */
+        public ContactsFetcher(List<Contact> contacts) {
+            this.contacts = contacts;
+        }
+
+        /**
+         * Retrieve the contacts from the database and insert.
+         */
+        public void run() {
+            this.contacts.addAll(AppDatabase.getInstance(getContext()).contacts().all());
+        }
+
     }
 
 }

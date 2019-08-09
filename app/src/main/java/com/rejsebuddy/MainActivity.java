@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(state);
         setContentView(R.layout.activity_main);
 
-        // Instantiate the application database.
-        AppDatabase.getInstance(this);
-
         // Connect page adapter to view element.
         ViewPager pager = findViewById(R.id.pager);
         pager.setAdapter(new MainPageAdapter(this, getSupportFragmentManager()));

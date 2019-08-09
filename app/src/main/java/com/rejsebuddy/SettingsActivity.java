@@ -95,7 +95,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Thread thread = new Thread() {
                         public void run() {
                             // Populate database with test data.
-                            AppDatabase.getInstance().populate();
+                            AppDatabase.getInstance(getContext()).populate();
                         }
                     };
 
@@ -133,7 +133,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Thread thread = new Thread() {
                         public void run() {
                             // Reset the entire database.
-                            AppDatabase.getInstance().reset();
+                            AppDatabase.getInstance(getContext()).reset();
                         }
                     };
 
