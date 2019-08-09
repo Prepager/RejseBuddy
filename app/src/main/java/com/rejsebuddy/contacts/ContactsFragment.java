@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.rejsebuddy.R;
 import com.rejsebuddy.storage.AppDatabase;
@@ -17,6 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsFragment extends Fragment {
+
+    /**
+     * The contacts data adapter.
+     */
+    private ContactsAdapter adapter;
+
+    /**
+     * The swipe to refresh element.
+     */
+    private SwipeRefreshLayout refresher;
 
     /**
      * The list of app contacts.
@@ -48,17 +59,34 @@ public class ContactsFragment extends Fragment {
         super.onViewCreated(view, state);
 
         // Create new contacts adapter.
-        ContactsAdapter adapter = new ContactsAdapter(contacts);
+        this.adapter = new ContactsAdapter(contacts);
 
         // Find recycler view and set adapter.
         RecyclerView list = view.findViewById(R.id.list);
-        list.setAdapter(adapter);
+        list.setAdapter(this.adapter);
 
         // Set recycler view layout manager.
         list.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
+        // Bind swipe up refresh action and enable loading.
+        this.refresher = view.findViewById(R.id.swipe_refresh);
+        this.refresher.setRefreshing(true);
+        this.refresher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchContacts();
+            }
+        });
+
         // Populate the contacts list.
-        new ContactsFetcher(this.contacts).start();
+        this.fetchContacts();
+    }
+
+    /**
+     * Dispatch event to fetch the contacts from storage.
+     */
+    protected void fetchContacts() {
+        new ContactsFetcher(this.adapter, this.refresher, this.contacts).start();
     }
 
     /**
@@ -67,16 +95,28 @@ public class ContactsFragment extends Fragment {
     class ContactsFetcher extends Thread {
 
         /**
+         * Reference to the adapter.
+         */
+        ContactsAdapter adapter;
+
+        /**
+         * Reference to the refresher.
+         */
+        SwipeRefreshLayout refresher;
+
+        /**
          * Reference to the contacts list.
          */
         List<Contact> contacts;
 
         /**
-         * Constructor to retrieve the contacts list.
+         * Constructor to retrieve the contacts details.
          *
          * @param contacts The contacts list reference.
          */
-        public ContactsFetcher(List<Contact> contacts) {
+        public ContactsFetcher(ContactsAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
+            this.adapter = adapter;
+            this.refresher = refresher;
             this.contacts = contacts;
         }
 
@@ -84,7 +124,13 @@ public class ContactsFragment extends Fragment {
          * Retrieve the contacts from the database and insert.
          */
         public void run() {
+            // Clear contacts and add new from database.
+            this.contacts.clear();
             this.contacts.addAll(AppDatabase.getInstance(getContext()).contacts().all());
+
+            // Notify of change and stop refreshing.
+            this.adapter.notifyDataSetChanged();
+            this.refresher.setRefreshing(false);
         }
 
     }
