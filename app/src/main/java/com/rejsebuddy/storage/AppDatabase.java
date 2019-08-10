@@ -13,12 +13,12 @@ import com.rejsebuddy.storage.contact.ContactDao;
 public abstract class AppDatabase extends RoomDatabase {
 
     /**
-     * TODO
+     * Holds the singleton instance.
      */
     private static AppDatabase instance;
 
     /**
-     * TODO
+     * Makes the contact data available.
      */
     public abstract ContactDao contacts();
 
@@ -44,18 +44,21 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     /**
-     * TODO
+     * Creates and returns a singleton instance.
+     *
+     * @param ctx The current application context.
+     * @return The singleton instance.
      */
     public static AppDatabase getInstance(Context ctx) {
-        // TODO
+        // Check if instance is not already set.
         if (AppDatabase.instance == null) {
-            // TODO
+            // Create new database instance.
             AppDatabase.instance = Room.databaseBuilder(ctx, AppDatabase.class,"rejsebuddy")
                 .enableMultiInstanceInvalidation()
                 .build();
         }
 
-        //
+        // Return the singleton instance.
         return AppDatabase.instance;
     }
 

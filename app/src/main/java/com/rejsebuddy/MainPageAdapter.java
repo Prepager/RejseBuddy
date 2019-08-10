@@ -12,17 +12,17 @@ import com.rejsebuddy.contacts.ContactsFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainPageAdapter extends FragmentStatePagerAdapter {
+class MainPageAdapter extends FragmentStatePagerAdapter {
 
     /**
      * The parent context state.
      */
-    Context ctx;
+    final private Context ctx;
 
     /**
      * The page adapter tab string ids and classes.
      */
-    List<Pair<Integer, Class<? extends Fragment>>> tabs = new ArrayList<Pair<Integer, Class<? extends Fragment>>>() {{
+    final private List<Pair<Integer, Class<? extends Fragment>>> tabs = new ArrayList<Pair<Integer, Class<? extends Fragment>>>() {{
         add(new Pair<Integer, Class<? extends Fragment>>(R.string.trips_title, TripsFragment.class));
         add(new Pair<Integer, Class<? extends Fragment>>(R.string.contacts_title, ContactsFragment.class));
     }};
@@ -34,7 +34,7 @@ public class MainPageAdapter extends FragmentStatePagerAdapter {
      * @param manager The fragment manager.
      */
     public MainPageAdapter(Context context, FragmentManager manager) {
-        super(manager, 0);
+        super(manager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         ctx = context;
     }
 

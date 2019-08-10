@@ -22,7 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/app_name"
-                android:paddingVertical="@dimen/appbar_logo_padding"
+                android:paddingStart="@dimen/appbar_logo_padding"
+                android:paddingEnd="@dimen/appbar_logo_padding"
                 android:src="@mipmap/ic_launcher_round" />
 
             <TextView
@@ -47,7 +48,8 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="openSettings"
-                android:paddingVertical="@dimen/appbar_logo_padding"
+                android:paddingEnd="@dimen/appbar_logo_padding"
+                android:paddingStart="@dimen/appbar_logo_padding"
                 android:src="@drawable/ic_settings_black_24dp" />
         </LinearLayout>
 

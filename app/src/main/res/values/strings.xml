@@ -10,9 +10,9 @@
 
     <string name="settings_data">Data</string>
     <string name="settings_delete_data">Slet applikations data</string>
-    <string name="settings_deleting_data">Sletter applikations data...</string>
+    <string name="settings_deleting_data">Sletter applikations data…</string>
     <string name="settings_delete_data_dec">Dette kan ikke fortrydes!</string>
     <string name="settings_import_data">Importer eksempeldata</string>
-    <string name="settings_importing_data">Importerer eksempeldata...</string>
+    <string name="settings_importing_data">Importerer eksempeldata…</string>
     <string name="settings_import_data_dec">Dette inkluderer: kontakter, og tidligere rejser.</string>
 </resources>

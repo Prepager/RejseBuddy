@@ -1,14 +1,13 @@
 package com.rejsebuddy;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.tabs.TabLayout;
-import com.rejsebuddy.storage.AppDatabase;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -11,7 +11,7 @@ public class Contact {
      * The id of the contact
      */
     @PrimaryKey
-    private int id;
+    final private int id;
 
     /**
      * The name of the contact.
@@ -46,7 +46,6 @@ public class Contact {
         return this.id;
     }
 
-
     /**
      * Returns the contact name.
      *
@@ -57,12 +56,30 @@ public class Contact {
     }
 
     /**
+     * Sets the contact name
+     *
+     * @param name The name of the contact.
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * Returns the contact address.
      *
      * @return The address of the contact.
      */
     public String getAddress() {
         return this.address;
+    }
+
+    /**
+     * Sets the contact address
+     *
+     * @param address The address of the contact.
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }

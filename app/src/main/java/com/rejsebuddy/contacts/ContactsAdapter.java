@@ -17,7 +17,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
     /**
      * The list of passed contacts.
      */
-    private List<Contact> contacts;
+    final private List<Contact> contacts;
 
     /**
      * Initiates the class instance with the contacts.
@@ -75,19 +75,19 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         /**
          * The contact name text element.
          */
-        public TextView name;
+        final private TextView name;
 
         /**
          * The contact address text element.
          */
-        public TextView address;
+        final private TextView address;
 
         /**
          * Populates the layout element holders.
          *
          * @param view The contact row view.
          */
-        public ContactViewHolder(View view) {
+        ContactViewHolder(View view) {
             super(view);
 
             this.name = view.findViewById(R.id.name);

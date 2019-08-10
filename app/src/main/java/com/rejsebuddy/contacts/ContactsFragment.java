@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +33,7 @@ public class ContactsFragment extends Fragment {
     /**
      * The list of app contacts.
      */
-    private List<Contact> contacts = new ArrayList<>();
+    final private List<Contact> contacts = new ArrayList<>();
 
     /**
      * Inflates the contacts fragment.
@@ -85,7 +86,7 @@ public class ContactsFragment extends Fragment {
     /**
      * Dispatch event to fetch the contacts from storage.
      */
-    protected void fetchContacts() {
+    private void fetchContacts() {
         new ContactsFetcher(this.adapter, this.refresher, this.contacts).start();
     }
 
@@ -97,24 +98,24 @@ public class ContactsFragment extends Fragment {
         /**
          * Reference to the adapter.
          */
-        ContactsAdapter adapter;
+        final ContactsAdapter adapter;
 
         /**
          * Reference to the refresher.
          */
-        SwipeRefreshLayout refresher;
+        final SwipeRefreshLayout refresher;
 
         /**
          * Reference to the contacts list.
          */
-        List<Contact> contacts;
+        final List<Contact> contacts;
 
         /**
          * Constructor to retrieve the contacts details.
          *
          * @param contacts The contacts list reference.
          */
-        public ContactsFetcher(ContactsAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
+        ContactsFetcher(ContactsAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
             this.adapter = adapter;
             this.refresher = refresher;
             this.contacts = contacts;

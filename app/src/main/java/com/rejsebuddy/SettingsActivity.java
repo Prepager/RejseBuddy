@@ -45,9 +45,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * TODO
+     * Handles the settings preferences.
      */
-    public static class SettingsFragment extends PreferenceFragmentCompat {
+    static class SettingsFragment extends PreferenceFragmentCompat {
 
         /**
          * Sets the preferences resource fragment.
@@ -77,7 +77,7 @@ public class SettingsActivity extends AppCompatActivity {
         /**
          * Setup the preference in the data category.
          */
-        protected void setupDataCategory() {
+        private void setupDataCategory() {
             // Find the delete and import data buttons.
             Preference importData = getPreferenceManager().findPreference("import_data");
             Preference deleteData = getPreferenceManager().findPreference("delete_data");
@@ -87,7 +87,7 @@ public class SettingsActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     // Show loading dialog.
-                    final ProgressDialog dialog = (new ProgressDialog(getContext()));
+                    final ProgressDialog dialog = new ProgressDialog(getContext());
                     dialog.setMessage(getResources().getString(R.string.settings_importing_data));
                     dialog.show();
 
@@ -125,7 +125,7 @@ public class SettingsActivity extends AppCompatActivity {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     // Show loading dialog.
-                    final ProgressDialog dialog = (new ProgressDialog(getContext()));
+                    final ProgressDialog dialog = new ProgressDialog(getContext());
                     dialog.setMessage(getResources().getString(R.string.settings_deleting_data));
                     dialog.show();
 

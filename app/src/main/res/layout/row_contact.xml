@@ -6,7 +6,8 @@
     android:background="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true"
-    android:padding="@dimen/list_padding">
+    android:padding="@dimen/list_padding"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/avatar"
@@ -24,7 +25,8 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:layout_marginStart="@dimen/list_avatar_size"
-        android:paddingHorizontal="@dimen/list_padding">
+        android:paddingEnd="@dimen/list_padding"
+        android:paddingStart="@dimen/list_padding">
 
         <TextView
             android:id="@+id/name"
