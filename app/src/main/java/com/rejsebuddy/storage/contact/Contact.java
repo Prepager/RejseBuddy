@@ -26,15 +26,29 @@ public class Contact {
     private String address;
 
     /**
+     * The address x position.
+     */
+    @ColumnInfo(name = "addrx")
+    private int addrx;
+
+    /**
+     * The address y position.
+     */
+    @ColumnInfo(name = "addry")
+    private int addry;
+
+    /**
      * Initiates the model instance.
      *
      * @param name The name of the contact
      * @param address The address of the contact
      */
-    public Contact(int id, String name, String address) {
+    public Contact(int id, String name, String address, int addrx, int addry) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.addrx = addrx;
+        this.addry = addry;
     }
 
     /**
@@ -80,6 +94,42 @@ public class Contact {
      */
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    /**
+     * Returns the address x position.
+     *
+     * @return The address x position.
+     */
+    public int getAddrx() {
+        return this.addrx;
+    }
+
+    /**
+     * Sets the address x position.
+     *
+     * @param addrx The address x position.
+     */
+    public void setAddrx(int addrx) {
+        this.addrx = addrx;
+    }
+
+    /**
+     * Returns the address y position.
+     *
+     * @return The address y position.
+     */
+    public int getAddry() {
+        return this.addry;
+    }
+
+    /**
+     * Sets the address y position.
+     *
+     * @param addry The address y position.
+     */
+    public void setAddry(int addry) {
+        this.addry = addry;
     }
 
 }

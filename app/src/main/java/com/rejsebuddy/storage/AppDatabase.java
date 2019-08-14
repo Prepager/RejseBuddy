@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.contact.ContactDao;
+import com.rejsebuddy.storage.contact.ContactsSeeder;
 
 @Database(entities = {Contact.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -36,11 +37,8 @@ public abstract class AppDatabase extends RoomDatabase {
         // Start by resetting db.
         this.reset();
 
-        // Create example contacts.
-        this.contacts().insert(new Contact(1, "Hjem", "Købmagergade 52A, 1150 København"));
-        this.contacts().insert(new Contact(2, "DTU Lyngby", "Anker Engelunds Vej 1, 2800 Kgs. Lyngby"));
-        this.contacts().insert(new Contact(3, "DTU Ballerup", "Lautrupvang 15, 2750 Ballerup"));
-        this.contacts().insert(new Contact(4, "Roskilde", "Rådhusbuen 1, 4000 Roskilde"));
+        // Seed database example data.
+        ContactsSeeder.seed(this);
     }
 
     /**
