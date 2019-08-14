@@ -130,8 +130,13 @@ public class ContactsFragment extends Fragment {
             this.contacts.addAll(AppDatabase.getInstance(getContext()).contacts().all());
 
             // Notify of change and stop refreshing.
-            this.adapter.notifyDataSetChanged();
-            this.refresher.setRefreshing(false);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.notifyDataSetChanged();
+                    refresher.setRefreshing(false);
+                }
+            });
         }
 
     }
