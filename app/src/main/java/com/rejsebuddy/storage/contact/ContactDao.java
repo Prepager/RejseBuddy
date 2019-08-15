@@ -20,14 +20,8 @@ public interface ContactDao {
     @Insert
     void insert(Contact contact);
 
-    @Insert
-    void insertMany(List<Contact> contacts);
-
     @Update
     void update(Contact contact);
-
-    @Update
-    void updateMany(List<Contact> contacts);
 
     @Delete
     void delete(Contact contact);

@@ -51,8 +51,7 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
      * @param view The current view.
      */
     public void onClick(View view) {
-        // TODO
-        System.out.println("Single tap " + getAdapterPosition());
+        // TODO: Handle single tap
     }
 
     /**

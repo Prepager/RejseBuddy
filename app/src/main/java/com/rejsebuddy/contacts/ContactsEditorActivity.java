@@ -1,5 +1,6 @@
 package com.rejsebuddy.contacts;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
@@ -7,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
-import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
+import com.rejsebuddy.storage.contact.tasks.FindContactTask;
 
-public class ContactsEditorActivity extends AppCompatActivity {
+public class ContactsEditorActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
-     * TODO
+     * The current contact instance.
      */
     private Contact contact;
 
@@ -31,29 +32,15 @@ public class ContactsEditorActivity extends AppCompatActivity {
         // Enable the return button.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Get passed contact ID from intent.
-        final int contactID = getIntent().getIntExtra("CONTACT_ID", -1);
+        // Get passed contact ID from intent and fetch.
+        int contactID = getIntent().getIntExtra("CONTACT_ID", -1);
         if (contactID != -1) {
-            // Fetch the passed contact.
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    contact = AppDatabase.getInstance(getBaseContext()).contacts().find(contactID);
-                    getSupportActionBar().setTitle(contact.getName());
-                }
-            }).start();
+            new FindContact(this).execute(contactID);
         }
 
         // Bind save contact floating action button.
         FloatingActionButton save = findViewById(R.id.save_contacts_fab);
-        save.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                // TODO
-            }
-
-        });
+        save.setOnClickListener(this);
     }
 
     /**
@@ -65,6 +52,44 @@ public class ContactsEditorActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    /**
+     * Saves the contacts changes.
+     *
+     * @param view The activity view.
+     */
+    public void onClick(View view) {
+        // TODO: Save changes
+    }
+
+    /**
+     * Fetches contact for the passed id.
+     */
+    private class FindContact extends FindContactTask {
+
+        /**
+         * Call parent super constructor.
+         *
+         * @param ctx The application context.
+         */
+        FindContact(Context ctx) {
+            super(ctx);
+        }
+
+        /**
+         * Saves the result and updates action bar title.
+         *
+         * @param result The fetched contact.
+         */
+        protected void onPostExecute(Contact result) {
+            // Save the contact result.
+            contact = result;
+
+            // Update the action bar title with name.
+            getSupportActionBar().setTitle(result.getName());
+        }
+
     }
 
 }

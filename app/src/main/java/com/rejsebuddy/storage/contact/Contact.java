@@ -11,7 +11,7 @@ public class Contact {
      * The id of the contact
      */
     @PrimaryKey
-    final private int id;
+    private int id;
 
     /**
      * The name of the contact.

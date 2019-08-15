@@ -1,5 +1,6 @@
 package com.rejsebuddy.contacts;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,13 +14,13 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
-import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
+import com.rejsebuddy.storage.contact.tasks.GetContactsTask;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsListFragment extends Fragment {
+public class ContactsListFragment extends Fragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     /**
      * The contacts data adapter.
@@ -72,86 +73,60 @@ public class ContactsListFragment extends Fragment {
 
         // Bind swipe up refresh action and enable loading.
         this.refresher = view.findViewById(R.id.swipe_refresh);
+        this.refresher.setOnRefreshListener(this);
         this.refresher.setRefreshing(true);
-        this.refresher.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetchContacts();
-            }
-        });
 
         // Bind add contacts floating action button.
         FloatingActionButton add = view.findViewById(R.id.add_contacts_fab);
-        add.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                // Start new contacts editor activity intent.
-                startActivity(new Intent(getContext(), ContactsEditorActivity.class));
-            }
-
-        });
+        add.setOnClickListener(this);
 
         // Populate the contacts list.
-        this.fetchContacts();
+        this.onRefresh();
     }
 
     /**
-     * Dispatch event to fetch the contacts from storage.
+     * Populate the contacts list on refresh.
      */
-    private void fetchContacts() {
-        new ContactsFetcher(this.adapter, this.refresher, this.contacts).start();
+    public void onRefresh() {
+        new GetContacts(getContext()).execute();
     }
 
     /**
-     * Contacts data fetcher class.
+     * Open contacts editor activity on floating click.
+     *
+     * @param view The current view.
      */
-    class ContactsFetcher extends Thread {
+    public void onClick(View view) {
+        startActivity(new Intent(getContext(), ContactsEditorActivity.class));
+    }
+
+    /**
+     * Fetch all contacts from database.
+     */
+    private class GetContacts extends GetContactsTask {
 
         /**
-         * Reference to the adapter.
-         */
-        final ContactsListAdapter adapter;
-
-        /**
-         * Reference to the refresher.
-         */
-        final SwipeRefreshLayout refresher;
-
-        /**
-         * Reference to the contacts list.
-         */
-        final List<Contact> contacts;
-
-        /**
-         * Constructor to retrieve the contacts details.
+         * Call parent super constructor.
          *
-         * @param contacts The contacts list reference.
+         * @param ctx The application context.
          */
-        ContactsFetcher(ContactsListAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
-            this.adapter = adapter;
-            this.refresher = refresher;
-            this.contacts = contacts;
+        GetContacts(Context ctx) {
+            super(ctx);
         }
 
         /**
-         * Retrieve the contacts from the database and insert.
+         * Save result and disable refreshing state.
+         *
+         * @param result The query list result.
          */
-        public void run() {
-            // Clear contacts and add new from database.
-            this.contacts.clear();
-            this.contacts.addAll(
-                AppDatabase.getInstance(getContext()).contacts().all()
-            );
+        protected void onPostExecute(List<Contact> result) {
+            // Clear list and add new.
+            contacts.clear();
+            contacts.addAll(result);
 
-            // Notify of change and stop refreshing.
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    adapter.notifyDataSetChanged();
-                    refresher.setRefreshing(false);
-                }
-            });
+            // Notify of change and stop loading.
+            adapter.notifyDataSetChanged();
+            refresher.setRefreshing(false);
         }
 
     }

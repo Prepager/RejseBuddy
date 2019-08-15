@@ -1,6 +1,8 @@
 package com.rejsebuddy;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
@@ -8,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.rejsebuddy.storage.AppDatabase;
+import com.rejsebuddy.storage.contact.Contact;
 
 public class MainActivity extends AppCompatActivity {
 
