@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
 import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
@@ -76,6 +77,18 @@ public class ContactsFragment extends Fragment {
             public void onRefresh() {
                 fetchContacts();
             }
+        });
+
+        // Bind add contacts floating action button.
+        FloatingActionButton add = view.findViewById(R.id.add_contacts_fab);
+        add.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // TODO
+                System.out.println("CREATE CONTACT");
+            }
+
         });
 
         // Populate the contacts list.
