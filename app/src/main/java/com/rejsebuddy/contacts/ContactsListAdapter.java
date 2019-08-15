@@ -11,7 +11,7 @@ import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.List;
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsRowHolder> {
+public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListHolder> {
 
     /**
      * The list of passed contacts.
@@ -23,7 +23,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsRowHolder> {
      *
      * @param contacts The contacts list to be shown.
      */
-    public ContactsAdapter(List<Contact> contacts) {
+    public ContactsListAdapter(List<Contact> contacts) {
         this.contacts = contacts;
     }
 
@@ -35,13 +35,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsRowHolder> {
      * @return View holder of the contact row.
      */
     @Override
-    public ContactsRowHolder onCreateViewHolder(ViewGroup parent, int type) {
+    public ContactsListHolder onCreateViewHolder(ViewGroup parent, int type) {
         // Inflate the contact row view.
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.row_contact, parent, false);
 
         // Return new view holder instance.
-        return new ContactsRowHolder(view);
+        return new ContactsListHolder(view);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsRowHolder> {
      * @param index The index of the current view.
      */
     @Override
-    public void onBindViewHolder(ContactsRowHolder holder, int index) {
+    public void onBindViewHolder(ContactsListHolder holder, int index) {
         holder.setContact(contacts.get(index));
     }
 

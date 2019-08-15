@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Connect page adapter to view element.
         ViewPager pager = findViewById(R.id.pager);
-        pager.setAdapter(new MainPageAdapter(this, getSupportFragmentManager()));
+        pager.setAdapter(new MainTabsAdapter(this, getSupportFragmentManager()));
 
         // Connect tab layout to view element.
         TabLayout tabs = findViewById(R.id.tabs);

@@ -19,12 +19,12 @@ import com.rejsebuddy.storage.contact.Contact;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContactsFragment extends Fragment {
+public class ContactsListFragment extends Fragment {
 
     /**
      * The contacts data adapter.
      */
-    private ContactsAdapter adapter;
+    private ContactsListAdapter adapter;
 
     /**
      * The swipe to refresh element.
@@ -61,7 +61,7 @@ public class ContactsFragment extends Fragment {
         super.onViewCreated(view, state);
 
         // Create new contacts adapter.
-        this.adapter = new ContactsAdapter(contacts);
+        this.adapter = new ContactsListAdapter(contacts);
 
         // Find recycler view and set adapter.
         RecyclerView list = view.findViewById(R.id.list);
@@ -111,7 +111,7 @@ public class ContactsFragment extends Fragment {
         /**
          * Reference to the adapter.
          */
-        final ContactsAdapter adapter;
+        final ContactsListAdapter adapter;
 
         /**
          * Reference to the refresher.
@@ -128,7 +128,7 @@ public class ContactsFragment extends Fragment {
          *
          * @param contacts The contacts list reference.
          */
-        ContactsFetcher(ContactsAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
+        ContactsFetcher(ContactsListAdapter adapter, SwipeRefreshLayout refresher, List<Contact> contacts) {
             this.adapter = adapter;
             this.refresher = refresher;
             this.contacts = contacts;

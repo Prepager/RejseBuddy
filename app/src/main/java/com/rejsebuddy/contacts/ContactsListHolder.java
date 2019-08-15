@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rejsebuddy.R;
 import com.rejsebuddy.storage.contact.Contact;
 
-class ContactsRowHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
     /**
      * The contact model id.
@@ -32,7 +32,7 @@ class ContactsRowHolder extends RecyclerView.ViewHolder implements View.OnClickL
      *
      * @param view The contact row view.
      */
-    ContactsRowHolder(View view) {
+    ContactsListHolder(View view) {
         // Call view holder super.
         super(view);
 

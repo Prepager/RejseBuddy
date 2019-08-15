@@ -7,12 +7,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.rejsebuddy.contacts.ContactsFragment;
+import com.rejsebuddy.contacts.ContactsListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class MainPageAdapter extends FragmentStatePagerAdapter {
+class MainTabsAdapter extends FragmentStatePagerAdapter {
 
     /**
      * The parent context state.
@@ -24,7 +24,7 @@ class MainPageAdapter extends FragmentStatePagerAdapter {
      */
     final private List<Pair<Integer, Class<? extends Fragment>>> tabs = new ArrayList<Pair<Integer, Class<? extends Fragment>>>() {{
         add(new Pair<Integer, Class<? extends Fragment>>(R.string.trips_title, TripsFragment.class));
-        add(new Pair<Integer, Class<? extends Fragment>>(R.string.contacts_title, ContactsFragment.class));
+        add(new Pair<Integer, Class<? extends Fragment>>(R.string.contacts_title, ContactsListFragment.class));
     }};
 
     /**
@@ -33,7 +33,7 @@ class MainPageAdapter extends FragmentStatePagerAdapter {
      * @param context The parent context state.
      * @param manager The fragment manager.
      */
-    public MainPageAdapter(Context context, FragmentManager manager) {
+    public MainTabsAdapter(Context context, FragmentManager manager) {
         super(manager, FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         ctx = context;
     }
