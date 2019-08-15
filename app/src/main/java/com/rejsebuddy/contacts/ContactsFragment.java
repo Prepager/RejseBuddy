@@ -1,5 +1,6 @@
 package com.rejsebuddy.contacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,8 +86,8 @@ public class ContactsFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                // TODO
-                System.out.println("CREATE CONTACT");
+                // Start new contacts editor activity intent.
+                startActivity(new Intent(getContext(), ContactsEditorActivity.class));
             }
 
         });
@@ -139,7 +140,9 @@ public class ContactsFragment extends Fragment {
         public void run() {
             // Clear contacts and add new from database.
             this.contacts.clear();
-            this.contacts.addAll(AppDatabase.getInstance(getContext()).contacts().all());
+            this.contacts.addAll(
+                AppDatabase.getInstance(getContext()).contacts().all()
+            );
 
             // Notify of change and stop refreshing.
             getActivity().runOnUiThread(new Runnable() {

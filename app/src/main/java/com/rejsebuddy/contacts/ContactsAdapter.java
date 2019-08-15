@@ -1,5 +1,6 @@
 package com.rejsebuddy.contacts;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
      */
     @Override
     public void onBindViewHolder(ContactViewHolder holder, int index) {
+        holder.id = contacts.get(index).getId();
         holder.name.setText(contacts.get(index).getName());
         holder.address.setText(contacts.get(index).getAddress());
     }
@@ -71,6 +73,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
      * Wrapper class to hold contact view elements.
      */
     public class ContactViewHolder extends RecyclerView.ViewHolder {
+
+        /**
+         * The contact model id.
+         */
+        private int id;
 
         /**
          * The contact name text element.
@@ -111,8 +118,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
                 @Override
                 public boolean onLongClick(View v) {
-                    // TODO
-                    System.out.println("Long tap " + getAdapterPosition());
+                    // Start new intent and include contact id.
+                    Intent intent = new Intent(v.getContext(), ContactsEditorActivity.class);
+                    intent.putExtra("CONTACT_ID", id);
+                    v.getContext().startActivity(intent);
+
+                    // Mark action as handled.
                     return true;
                 }
 
