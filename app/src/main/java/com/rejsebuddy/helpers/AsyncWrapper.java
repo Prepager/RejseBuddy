@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import java.lang.ref.WeakReference;
 
-public abstract class AsyncWrapper<Params, Result> extends AsyncTask<Params, Void, Result> {
+public abstract class AsyncWrapper<Params, Result, Instance> extends AsyncTask<Params, Void, Result> {
 
     /**
      * Weak referenced context to prevent leak.
@@ -14,12 +14,19 @@ public abstract class AsyncWrapper<Params, Result> extends AsyncTask<Params, Voi
     protected WeakReference<Context> ctx;
 
     /**
+     * Weak reference for the current class.
+     */
+    protected WeakReference<Instance> instance;
+
+    /**
      * Save weak referenced context.
      *
      * @param ctx The application context.
+     * @param instance The current class instance.
      */
-    public AsyncWrapper(Context ctx) {
+    public AsyncWrapper(Context ctx, Instance instance) {
         this.ctx = new WeakReference<>(ctx);
+        this.instance = new WeakReference<>(instance);
     }
 
     /**
@@ -28,7 +35,16 @@ public abstract class AsyncWrapper<Params, Result> extends AsyncTask<Params, Voi
      * @return The application context.
      */
     protected Context getContext() {
-        return ctx.get();
+        return this.ctx.get();
+    }
+
+    /**
+     * Gathers instance from weak reference.
+     *
+     * @return The current class.
+     */
+    protected Instance getInstance() {
+        return this.instance.get();
     }
 
 }

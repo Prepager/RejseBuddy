@@ -6,15 +6,16 @@ import com.rejsebuddy.helpers.AsyncWrapper;
 import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
 
-public class FindContactTask extends AsyncWrapper<Integer, Contact> {
+abstract public class FindContactTask<Instance> extends AsyncWrapper<Integer, Contact, Instance> {
 
     /**
      * Call parent super constructor.
      *
      * @param ctx The application context.
+     * @param instance The current class instance.
      */
-    public FindContactTask(Context ctx) {
-        super(ctx);
+    public FindContactTask(Context ctx, Instance instance) {
+        super(ctx, instance);
     }
 
     /**

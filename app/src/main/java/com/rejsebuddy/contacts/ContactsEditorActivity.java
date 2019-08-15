@@ -35,7 +35,7 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
         // Get passed contact ID from intent and fetch.
         int contactID = getIntent().getIntExtra("CONTACT_ID", -1);
         if (contactID != -1) {
-            new FindContact(this).execute(contactID);
+            new FindContact(this, this).execute(contactID);
         }
 
         // Bind save contact floating action button.
@@ -66,15 +66,15 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
     /**
      * Fetches contact for the passed id.
      */
-    private class FindContact extends FindContactTask {
+    private static class FindContact extends FindContactTask<ContactsEditorActivity> {
 
         /**
          * Call parent super constructor.
          *
          * @param ctx The application context.
          */
-        FindContact(Context ctx) {
-            super(ctx);
+        FindContact(Context ctx, ContactsEditorActivity instance) {
+            super(ctx, instance);
         }
 
         /**
@@ -84,10 +84,10 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
          */
         protected void onPostExecute(Contact result) {
             // Save the contact result.
-            contact = result;
+            this.getInstance().contact = result;
 
             // Update the action bar title with name.
-            getSupportActionBar().setTitle(result.getName());
+            this.getInstance().getSupportActionBar().setTitle(result.getName());
         }
 
     }

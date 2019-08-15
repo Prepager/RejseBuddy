@@ -88,7 +88,7 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
      * Populate the contacts list on refresh.
      */
     public void onRefresh() {
-        new GetContacts(getContext()).execute();
+        new GetContacts(getContext(), this).execute();
     }
 
     /**
@@ -103,15 +103,16 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
     /**
      * Fetch all contacts from database.
      */
-    private class GetContacts extends GetContactsTask {
+    private static class GetContacts extends GetContactsTask<ContactsListFragment> {
 
         /**
          * Call parent super constructor.
          *
          * @param ctx The application context.
+         * @param instance The current class instance.
          */
-        GetContacts(Context ctx) {
-            super(ctx);
+        GetContacts(Context ctx, ContactsListFragment instance) {
+            super(ctx, instance);
         }
 
         /**
@@ -121,12 +122,12 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
          */
         protected void onPostExecute(List<Contact> result) {
             // Clear list and add new.
-            contacts.clear();
-            contacts.addAll(result);
+            this.getInstance().contacts.clear();
+            this.getInstance().contacts.addAll(result);
 
             // Notify of change and stop loading.
-            adapter.notifyDataSetChanged();
-            refresher.setRefreshing(false);
+            this.getInstance().adapter.notifyDataSetChanged();
+            this.getInstance().refresher.setRefreshing(false);
         }
 
     }

@@ -8,15 +8,16 @@ import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.List;
 
-public class GetContactsTask extends AsyncWrapper<Void, List<Contact>> {
+abstract public class GetContactsTask<Instance> extends AsyncWrapper<Void, List<Contact>, Instance> {
 
     /**
      * Call parent super constructor.
      *
      * @param ctx The application context.
+     * @param instance The current class instance.
      */
-    public GetContactsTask(Context ctx) {
-        super(ctx);
+    public GetContactsTask(Context ctx, Instance instance) {
+        super(ctx, instance);
     }
 
     /**
