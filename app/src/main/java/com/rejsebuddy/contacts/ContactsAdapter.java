@@ -88,10 +88,35 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
          * @param view The contact row view.
          */
         ContactViewHolder(View view) {
+            // Call view holder super.
             super(view);
 
+            // Bind the view elements.
             this.name = view.findViewById(R.id.name);
             this.address = view.findViewById(R.id.address);
+
+            // Add listener to on click event.
+            view.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO
+                    System.out.println("Single tap " + getAdapterPosition());
+                }
+
+            });
+
+            // Add listener to on long click event.
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+
+                @Override
+                public boolean onLongClick(View v) {
+                    // TODO
+                    System.out.println("Long tap " + getAdapterPosition());
+                    return true;
+                }
+
+            });
         }
 
     }
