@@ -101,6 +101,15 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
     }
 
     /**
+     * Refresh the data on fragment resume.
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.onRefresh();
+    }
+
+    /**
      * Fetch all contacts from database.
      *
      * TODO: Do in adapter instead of fragment.

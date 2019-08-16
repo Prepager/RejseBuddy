@@ -6,6 +6,8 @@
     <string name="settings_title">Indstillinger</string>
     <string name="create_contacts_title">Opret Kontakt</string>
 
+    <string name="save_contact">Gem Kontakt</string>
+
     <string name="name">Navn</string>
     <string name="missing_name">Mangler Navn</string>
     <string name="address">Adresse</string>

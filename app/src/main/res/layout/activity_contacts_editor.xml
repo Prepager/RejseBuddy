@@ -16,24 +16,25 @@
             android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:paddingBottom="@dimen/list_padding"
             android:inputType="textPersonName"
-            android:hint="@string/name" />
+            android:hint="@string/name"
+            android:importantForAutofill="no" />
 
         <fragment
             android:id="@+id/address"
             android:name="com.rejsebuddy.address.AddressInputFragment"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/list_padding" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/save_contact" />
 
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/save_contacts_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/ic_save_black_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

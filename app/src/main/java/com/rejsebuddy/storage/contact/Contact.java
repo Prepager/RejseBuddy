@@ -12,7 +12,7 @@ public class Contact {
     /**
      * The id of the contact
      */
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     /**
@@ -42,8 +42,11 @@ public class Contact {
     /**
      * Initiates the model instance.
      *
-     * @param name The name of the contact
-     * @param address The address of the contact
+     * @param id The id of the contact.
+     * @param name The name of the contact.
+     * @param address The address of the contact.
+     * @param addrx The address x position.
+     * @param addry The address y position.
      */
     public Contact(int id, String name, String address, int addrx, int addry) {
         this.id = id;
@@ -51,6 +54,17 @@ public class Contact {
         this.address = address;
         this.addrx = addrx;
         this.addry = addry;
+    }
+
+    /**
+     * Initiates the model instance without id.
+     *
+     * @param name The name of the contact.
+     * @param address The address instance.
+     */
+    public Contact(String name, Address address) {
+        this.name = name;
+        this.setAddressInstance(address);
     }
 
     /**
@@ -147,7 +161,7 @@ public class Contact {
      * @param address The address instance.
      */
     public void setAddressInstance(Address address) {
-        this.setName(address.getAddress());
+        this.setAddress(address.getAddress());
         this.setAddrx(address.getAddrx());
         this.setAddry(address.getAddry());
     }
