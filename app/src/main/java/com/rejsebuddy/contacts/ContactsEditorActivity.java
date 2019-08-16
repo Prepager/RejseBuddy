@@ -3,20 +3,34 @@ package com.rejsebuddy.contacts;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
+import com.rejsebuddy.address.Address;
+import com.rejsebuddy.address.AddressInputFragment;
 import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.contact.tasks.FindContactTask;
 
-public class ContactsEditorActivity extends AppCompatActivity implements View.OnClickListener {
+public class ContactsEditorActivity extends AppCompatActivity implements View.OnClickListener, AddressInputFragment.OnAddressChangeListener {
 
     /**
      * The current contact instance.
      */
     private Contact contact;
+
+    /**
+     * The address name input.
+     */
+    private EditText nameInput;
+
+    /**
+     * The address input fragment.
+     */
+    private AddressInputFragment addressInput;
 
     /**
      * Initiate the activity.
@@ -31,6 +45,13 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
 
         // Enable the return button.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // Save the name input.
+        this.nameInput = findViewById(R.id.name);
+
+        // Save the address input fragment.
+        FragmentManager manager = getSupportFragmentManager();
+        this.addressInput = (AddressInputFragment) manager.findFragmentById(R.id.address);
 
         // Get passed contact ID from intent and fetch.
         int contactID = getIntent().getIntExtra("CONTACT_ID", -1);
@@ -64,6 +85,16 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
     }
 
     /**
+     * Saves the address changes.
+     *
+     * @param address The selected address.
+     */
+    @Override
+    public void onAddressChanged(Address address) {
+        // TODO: Save address.
+    }
+
+    /**
      * Fetches contact for the passed id.
      */
     private static class FindContact extends FindContactTask<ContactsEditorActivity> {
@@ -83,11 +114,18 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
          * @param result The fetched contact.
          */
         protected void onPostExecute(Contact result) {
+            // Get the parent instance.
+            ContactsEditorActivity instance = this.getInstance();
+
             // Save the contact result.
-            this.getInstance().contact = result;
+            instance.contact = result;
 
             // Update the action bar title with name.
-            this.getInstance().getSupportActionBar().setTitle(result.getName());
+            instance.getSupportActionBar().setTitle(result.getName());
+
+            // Set text on inputs.
+            instance.nameInput.setText(result.getName());
+            instance.addressInput.setAddress(result.getAddressIntance());
         }
 
     }

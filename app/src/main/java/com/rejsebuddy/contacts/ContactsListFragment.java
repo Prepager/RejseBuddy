@@ -102,6 +102,8 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
 
     /**
      * Fetch all contacts from database.
+     *
+     * TODO: Do in adapter instead of fragment.
      */
     private static class GetContacts extends GetContactsTask<ContactsListFragment> {
 
@@ -121,13 +123,16 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
          * @param result The query list result.
          */
         protected void onPostExecute(List<Contact> result) {
+            // Get the parent instance.
+            ContactsListFragment instance = this.getInstance();
+
             // Clear list and add new.
-            this.getInstance().contacts.clear();
-            this.getInstance().contacts.addAll(result);
+            instance.contacts.clear();
+            instance.contacts.addAll(result);
 
             // Notify of change and stop loading.
-            this.getInstance().adapter.notifyDataSetChanged();
-            this.getInstance().refresher.setRefreshing(false);
+            instance.adapter.notifyDataSetChanged();
+            instance.refresher.setRefreshing(false);
         }
 
     }

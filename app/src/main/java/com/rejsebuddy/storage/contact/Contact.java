@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.rejsebuddy.address.Address;
+
 @Entity
 public class Contact {
 
@@ -130,6 +132,24 @@ public class Contact {
      */
     public void setAddry(int addry) {
         this.addry = addry;
+    }
+
+    /**
+     * Returns new address instance.
+     */
+    public Address getAddressIntance() {
+        return new Address(this.address, this.addrx, this.addry);
+    }
+
+    /**
+     * Sets the address instance.
+     *
+     * @param address The address instance.
+     */
+    public void setAddressInstance(Address address) {
+        this.setName(address.getAddress());
+        this.setAddrx(address.getAddrx());
+        this.setAddry(address.getAddry());
     }
 
 }

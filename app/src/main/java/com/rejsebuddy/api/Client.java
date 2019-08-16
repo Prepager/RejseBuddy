@@ -44,12 +44,8 @@ class Client {
     private XmlPullParser parse(InputStream stream) throws XmlPullParserException, IOException {
         // Create new parser and set input stream.
         XmlPullParser parser = Xml.newPullParser();
-        //parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
         parser.setInput(stream, null);
         parser.nextTag();
-
-        // Close the input stream.
-        stream.close();
 
         // Return the created parser.
         return parser;
