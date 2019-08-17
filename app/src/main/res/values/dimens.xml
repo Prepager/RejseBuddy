@@ -1,7 +1,10 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="appbar_padding">16dp</dimen>
-    <dimen name="appbar_logo_padding">6dp</dimen>
+    <dimen name="appbar_logo_padding">10dp</dimen>
+
+    <dimen name="appbar_settings_padding">12dp</dimen>
+    <dimen name="appbar_settings_margin">2dp</dimen>
 
     <dimen name="list_padding">12dp</dimen>
     <dimen name="list_avatar_size">46dp</dimen>

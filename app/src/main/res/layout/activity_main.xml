@@ -19,6 +19,9 @@
 
             <ImageView
                 android:id="@+id/logo"
+                android:maxHeight="48dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/app_name"
@@ -48,8 +51,9 @@
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="openSettings"
-                android:paddingEnd="@dimen/appbar_logo_padding"
-                android:paddingStart="@dimen/appbar_logo_padding"
+                android:paddingEnd="@dimen/appbar_settings_padding"
+                android:paddingStart="@dimen/appbar_settings_padding"
+                android:layout_marginEnd="@dimen/appbar_settings_margin"
                 android:src="@drawable/ic_settings_black_24dp" />
         </LinearLayout>
 

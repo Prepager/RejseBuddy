@@ -111,8 +111,6 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
 
     /**
      * Fetch all contacts from database.
-     *
-     * TODO: Do in adapter instead of fragment.
      */
     private static class GetContacts extends GetContactsTask<ContactsListFragment> {
 

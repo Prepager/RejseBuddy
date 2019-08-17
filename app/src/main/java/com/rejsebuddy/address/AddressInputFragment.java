@@ -76,7 +76,10 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onAttach(Context ctx) {
         super.onAttach(ctx);
-        this.listener = (OnAddressChangeListener) ctx;
+
+        try {
+            this.listener = (OnAddressChangeListener) ctx;
+        } catch (Exception e) {}
     }
 
     /**
@@ -89,6 +92,7 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
      */
     @Override
     public void onItemClick(AdapterView<?> adapter, View view, int pos, long id) {
+        if (this.listener == null) return;
         this.listener.onAddressChanged((Address) adapter.getItemAtPosition(pos));
     }
 

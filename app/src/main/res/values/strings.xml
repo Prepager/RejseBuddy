@@ -8,6 +8,10 @@
 
     <string name="save_contact">Gem Kontakt</string>
 
+    <string name="to">Til</string>
+    <string name="from">Fra</string>
+    <string name="start_trip">Start Rejse</string>
+
     <string name="name">Navn</string>
     <string name="missing_name">Mangler Navn</string>
     <string name="address">Adresse</string>
