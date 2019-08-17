@@ -65,14 +65,14 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
         this.adapter = new ContactsListAdapter(contacts);
 
         // Find recycler view and set adapter.
-        RecyclerView list = view.findViewById(R.id.list);
+        RecyclerView list = view.findViewById(R.id.contacts_list);
         list.setAdapter(this.adapter);
 
         // Set recycler view layout manager.
         list.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         // Bind swipe up refresh action and enable loading.
-        this.refresher = view.findViewById(R.id.swipe_refresh);
+        this.refresher = view.findViewById(R.id.contacts_swipe_refresh);
         this.refresher.setOnRefreshListener(this);
         this.refresher.setRefreshing(true);
 

@@ -12,7 +12,7 @@ public class Consumer extends Client {
      * @param input The query input string.
      * @return The XML parser instance.
      */
-    public XmlPullParser requestLocation(String input) throws Exception {
+    public XmlPullParser searchLocations(String input) throws Exception {
         return this.request("/location?input=" + URLEncoder.encode(input, "UTF-8"));
     }
 

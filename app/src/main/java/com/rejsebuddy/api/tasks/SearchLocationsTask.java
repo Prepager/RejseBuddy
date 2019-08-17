@@ -37,7 +37,7 @@ abstract public class SearchLocationsTask<Instance> extends AsyncWrapper<String,
         // Attempt to fetch locations for search.
         try {
             // Request locations for search and skip root tag.
-            XmlPullParser parser = new Consumer().requestLocation(searches[0]);
+            XmlPullParser parser = new Consumer().searchLocations(searches[0]);
             parser.next();
 
             // Get the current tag type.

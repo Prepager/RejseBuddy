@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,14 +35,15 @@
                 android:layout_marginBottom="@dimen/list_padding" />
 
             <ImageButton
-                android:id="@+id/location"
+                android:id="@+id/request_location"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:src="@drawable/ic_my_location_black_24dp"
-                style="?android:attr/borderlessButtonStyle"
+                android:contentDescription="@string/location"
                 android:minWidth="0dp"
-                android:minHeight="0dp" />
+                android:minHeight="0dp"
+                android:src="@drawable/ic_my_location_black_24dp" />
 
         </LinearLayout>
 
@@ -82,16 +82,15 @@
         android:orientation="vertical">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_refresh"
+            android:id="@+id/trips_swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list"
+                android:id="@+id/trips_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:context=".contacts.ContactsListFragment">
+                android:scrollbars="vertical">
 
             </androidx.recyclerview.widget.RecyclerView>
 

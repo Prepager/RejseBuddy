@@ -19,7 +19,8 @@
             android:paddingBottom="@dimen/list_padding"
             android:inputType="textPersonName"
             android:hint="@string/name"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            tools:targetApi="o" />
 
         <fragment
             android:id="@+id/address"

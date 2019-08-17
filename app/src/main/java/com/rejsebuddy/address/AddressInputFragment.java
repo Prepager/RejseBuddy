@@ -93,7 +93,7 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapter, View view, int pos, long id) {
         if (this.listener == null) return;
-        this.listener.onAddressChanged((Address) adapter.getItemAtPosition(pos));
+        this.listener.onAddressChanged(getView(), (Address) adapter.getItemAtPosition(pos));
     }
 
     /**
@@ -106,6 +106,15 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
     }
 
     /**
+     * Sets the input on address change listener.
+     *
+     * @param listener The listener to bind.
+     */
+    public void setOnAddressChangeListener(OnAddressChangeListener listener) {
+        this.listener = listener;
+    }
+
+    /**
      * Interface to listen for address changes.
      */
     public interface OnAddressChangeListener {
@@ -113,9 +122,10 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
         /**
          * Called when the address is changed.
          *
+         * @param view The activated view.
          * @param address The selected address.
          */
-        void onAddressChanged(Address address);
+        void onAddressChanged(View view, Address address);
 
     }
 

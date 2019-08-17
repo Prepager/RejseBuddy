@@ -9,7 +9,6 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
 import com.rejsebuddy.address.Address;
 import com.rejsebuddy.address.AddressInputFragment;
@@ -120,10 +119,11 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
     /**
      * Saves the address changes.
      *
+     * @param view The activated view.
      * @param address The selected address.
      */
     @Override
-    public void onAddressChanged(Address address) {
+    public void onAddressChanged(View view, Address address) {
         // Save address on instance.
         this.address = address;
 
