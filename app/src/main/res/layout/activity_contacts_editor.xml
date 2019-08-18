@@ -12,6 +12,14 @@
         android:orientation="vertical"
         android:padding="@dimen/list_padding">
 
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent" />
+
         <EditText
             android:id="@+id/name"
             android:layout_width="fill_parent"
@@ -20,14 +28,24 @@
             android:inputType="textPersonName"
             android:hint="@string/name"
             android:importantForAutofill="no"
-            tools:targetApi="o" />
+            tools:targetApi="o"
+            android:layout_marginBottom="@dimen/list_padding" />
+
+        <TextView
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent" />
 
         <fragment
             android:id="@+id/address"
             android:name="com.rejsebuddy.address.AddressInputFragment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/list_padding" />
+            android:paddingBottom="@dimen/list_padding"
+            android:layout_marginBottom="@dimen/list_padding" />
 
         <Button
             android:id="@+id/save"
