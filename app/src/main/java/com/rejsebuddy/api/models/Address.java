@@ -1,6 +1,8 @@
-package com.rejsebuddy.address;
+package com.rejsebuddy.api.models;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     /**
      * The address name.

@@ -1,4 +1,4 @@
-package com.rejsebuddy.contacts;
+package com.rejsebuddy.views.contacts;
 
 import android.content.Context;
 import android.content.Intent;

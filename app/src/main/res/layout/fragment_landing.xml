@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TripsFragment">
+    tools:context=".LandingFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
 
             <fragment
                 android:id="@+id/from"
-                android:name="com.rejsebuddy.address.AddressInputFragment"
+                android:name="com.rejsebuddy.views.address.AddressInputFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -57,7 +57,7 @@
 
         <fragment
             android:id="@+id/to"
-            android:name="com.rejsebuddy.address.AddressInputFragment"
+            android:name="com.rejsebuddy.views.address.AddressInputFragment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/list_padding" />

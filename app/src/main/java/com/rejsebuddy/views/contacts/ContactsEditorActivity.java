@@ -1,4 +1,4 @@
-package com.rejsebuddy.contacts;
+package com.rejsebuddy.views.contacts;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.rejsebuddy.R;
-import com.rejsebuddy.address.Address;
-import com.rejsebuddy.address.AddressInputFragment;
+import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.contact.tasks.CreateOrUpdateContactTask;
 import com.rejsebuddy.storage.contact.tasks.FindContactTask;
+import com.rejsebuddy.views.address.AddressInputFragment;
 
 public class ContactsEditorActivity extends AppCompatActivity implements View.OnClickListener, AddressInputFragment.OnAddressChangeListener {
 

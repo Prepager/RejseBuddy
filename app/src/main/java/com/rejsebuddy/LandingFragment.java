@@ -1,5 +1,7 @@
 package com.rejsebuddy;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,54 +12,55 @@ import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.rejsebuddy.address.Address;
-import com.rejsebuddy.address.AddressInputFragment;
+import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.helpers.UserLocation;
+import com.rejsebuddy.views.address.AddressInputFragment;
+import com.rejsebuddy.views.connections.ConnectionsListActivity;
 
-class TripsFragment extends Fragment implements AddressInputFragment.OnAddressChangeListener {
+class LandingFragment extends Fragment implements View.OnClickListener, AddressInputFragment.OnAddressChangeListener {
 
     /**
-     * TODO
+     * The selected from address.
      */
     private Address from;
 
     /**
-     * TODO
+     * The from address input fragment.
      */
     private AddressInputFragment fromInput;
 
     /**
-     * TODO
+     * The selected to address.
      */
     private Address to;
 
     /**
-     * TODO
+     * The to address input fragment.
      */
     private AddressInputFragment toInput;
 
     /**
-     * TODO
+     * The begin travel button instance.
      */
     private Button travel;
 
     /**
-     * TODO
+     * Inflates the contacts fragment.
      *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
+     * @param inflater The layout inflater instance.
+     * @param container The group view container.
+     * @param state The saved state of the view.
+     * @return The inflated fragment view.
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trips, container, false);
+        return inflater.inflate(R.layout.fragment_landing, container, false);
     }
 
     /**
-     * TODO
+     * Binds the view elements to the instance.
      *
-     * @param view The contacts row view.
+     * @param view The current view instance.
      * @param state The previous view state.
      */
     @Override
@@ -89,6 +92,7 @@ class TripsFragment extends Fragment implements AddressInputFragment.OnAddressCh
 
         // Bind travel button to instance.
         this.travel = view.findViewById(R.id.travel);
+        this.travel.setOnClickListener(this);
 
         // Get and save address input fragments.
         FragmentManager manager = getChildFragmentManager();
@@ -123,6 +127,23 @@ class TripsFragment extends Fragment implements AddressInputFragment.OnAddressCh
         if (this.to != null && this.from != null) {
             this.travel.setEnabled(true);
         }
+    }
+
+    /**
+     * Parse addresses to connections activity.
+     *
+     * @param view The current view.
+     */
+    @Override
+    public void onClick(View view) {
+        // Get context from view.
+        Context ctx = view.getContext();
+
+        // Start activity with to and from address.
+        Intent intent = new Intent(ctx, ConnectionsListActivity.class);
+        intent.putExtra("TO_ADDRESS", to);
+        intent.putExtra("FROM_ADDRESS", from);
+        ctx.startActivity(intent);
     }
 
 }

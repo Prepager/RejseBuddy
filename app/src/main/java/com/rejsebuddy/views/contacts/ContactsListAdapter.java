@@ -1,4 +1,4 @@
-package com.rejsebuddy.contacts;
+package com.rejsebuddy.views.contacts;
 
 import android.view.LayoutInflater;
 import android.view.View;

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.rejsebuddy.address.Address;
+import com.rejsebuddy.api.models.Address;
 
 @Entity
 public class Contact {

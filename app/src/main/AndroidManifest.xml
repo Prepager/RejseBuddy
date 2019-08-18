@@ -17,7 +17,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".contacts.ContactsEditorActivity"
+            android:name=".views.connections.ConnectionsListActivity"
+            android:label="@string/connections_title"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".views.contacts.ContactsEditorActivity"
             android:label="@string/create_contacts_title"
             android:theme="@style/AppTheme" />
         <activity

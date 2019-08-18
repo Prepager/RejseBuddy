@@ -11,7 +11,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.rejsebuddy.R;
-import com.rejsebuddy.address.Address;
+import com.rejsebuddy.api.models.Address;
 
 public class UserLocation {
 

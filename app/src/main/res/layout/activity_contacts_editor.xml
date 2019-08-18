@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contacts.ContactsEditorActivity">
+    tools:context=".views.contacts.ContactsEditorActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
 
         <fragment
             android:id="@+id/address"
-            android:name="com.rejsebuddy.address.AddressInputFragment"
+            android:name="com.rejsebuddy.views.address.AddressInputFragment"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="@dimen/list_padding"

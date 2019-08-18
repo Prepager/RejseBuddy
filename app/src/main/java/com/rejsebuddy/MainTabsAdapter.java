@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.rejsebuddy.contacts.ContactsListFragment;
+import com.rejsebuddy.views.contacts.ContactsListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ class MainTabsAdapter extends FragmentStatePagerAdapter {
      * The page adapter tab string ids and classes.
      */
     final private List<Pair<Integer, Class<? extends Fragment>>> tabs = new ArrayList<Pair<Integer, Class<? extends Fragment>>>() {{
-        add(new Pair<Integer, Class<? extends Fragment>>(R.string.trips_title, TripsFragment.class));
+        add(new Pair<Integer, Class<? extends Fragment>>(R.string.trips_title, LandingFragment.class));
         add(new Pair<Integer, Class<? extends Fragment>>(R.string.contacts_title, ContactsListFragment.class));
     }};
 

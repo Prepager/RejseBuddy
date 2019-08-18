@@ -1,4 +1,4 @@
-package com.rejsebuddy.contacts;
+package com.rejsebuddy.views.contacts;
 
 import android.content.Context;
 import android.content.Intent;
@@ -47,7 +47,7 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
-        return inflater.inflate(R.layout.fragment_contacts, container, false);
+        return inflater.inflate(R.layout.fragment_contacts_list, container, false);
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.rejsebuddy.address;
+package com.rejsebuddy.views.address;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import androidx.fragment.app.Fragment;
 
 import com.rejsebuddy.R;
+import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.api.tasks.SearchLocationsTask;
 import com.rejsebuddy.helpers.DebouncedTextWatcher;
 

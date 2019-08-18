@@ -2,8 +2,8 @@ package com.rejsebuddy.api.tasks;
 
 import android.content.Context;
 
-import com.rejsebuddy.address.Address;
 import com.rejsebuddy.api.Consumer;
+import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.helpers.AsyncWrapper;
 
 import org.xmlpull.v1.XmlPullParser;

@@ -4,6 +4,7 @@
     <string name="trips_title">Rejser</string>
     <string name="contacts_title">Kontakter</string>
     <string name="settings_title">Indstillinger</string>
+    <string name="connections_title">Forbindelser</string>
     <string name="create_contacts_title">Opret Kontakt</string>
 
     <string name="save_contact">Gem Kontakt</string>
@@ -15,9 +16,13 @@
     <string name="start_trip">Start Rejse</string>
 
     <string name="name">Navn</string>
+    <string name="missing">Mangler</string>
     <string name="missing_name">Mangler Navn</string>
     <string name="address">Adresse</string>
     <string name="missing_address">Mangler Adresse</string>
+
+    <string name="amount_changes">%1$d Skift</string>
+    <string name="amount_duration">%1$s Varighed</string>
 
     <string name="settings_data">Data</string>
     <string name="settings_delete_data">Slet applikations data</string>
