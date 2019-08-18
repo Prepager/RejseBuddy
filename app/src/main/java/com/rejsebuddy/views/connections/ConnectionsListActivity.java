@@ -13,6 +13,7 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.api.models.Connection;
 import com.rejsebuddy.api.tasks.GetConnectionsTask;
+import com.rejsebuddy.helpers.UserLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,15 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
         // Get to/from addresses from intent.
         this.to = (Address) getIntent().getSerializableExtra("TO_ADDRESS");
         this.from = (Address) getIntent().getSerializableExtra("FROM_ADDRESS");
+
+        // Keep requesting location if not passed.
+        while (this.from == null) {
+            try {
+                this.from = new UserLocation().request(this, this);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
         // Create new connections adapter.
         this.adapter = new ConnectionsListAdapter(this.connections);

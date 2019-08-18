@@ -53,7 +53,7 @@ class LandingFragment extends Fragment implements View.OnClickListener, AddressI
      * @return The inflated fragment view.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
         return inflater.inflate(R.layout.fragment_landing, container, false);
     }
 

@@ -8,7 +8,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
+import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.storage.contact.Contact;
+import com.rejsebuddy.views.connections.ConnectionsListActivity;
 
 class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
@@ -18,14 +20,19 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
     private int id;
 
     /**
+     * The contact addresse.
+     */
+    private Address address;
+
+    /**
      * The contact name text element.
      */
-    final private TextView name;
+    final private TextView nameText;
 
     /**
      * The contact address text element.
      */
-    final private TextView address;
+    final private TextView addressText;
 
     /**
      * Populates the layout element holders.
@@ -37,8 +44,8 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
         super(view);
 
         // Bind the view elements.
-        this.name = view.findViewById(R.id.name);
-        this.address = view.findViewById(R.id.address);
+        this.nameText = view.findViewById(R.id.name);
+        this.addressText = view.findViewById(R.id.address);
 
         // Bind single and long click listeners.
         view.setOnClickListener(this);
@@ -51,7 +58,13 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
      * @param view The current view.
      */
     public void onClick(View view) {
-        // TODO: Handle single tap
+        // Get context from view.
+        Context ctx = view.getContext();
+
+        // Start activity with to address.
+        Intent intent = new Intent(ctx, ConnectionsListActivity.class);
+        intent.putExtra("TO_ADDRESS", this.address);
+        ctx.startActivity(intent);
     }
 
     /**
@@ -79,7 +92,9 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
      */
     public void setContact(Contact contact) {
         this.id = contact.getId();
-        this.name.setText(contact.getName());
-        this.address.setText(contact.getAddress());
+        this.address = contact.getAddressIntance();
+
+        this.nameText.setText(contact.getName());
+        this.addressText.setText(contact.getAddress());
     }
 }
