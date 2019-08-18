@@ -39,8 +39,8 @@ public class UserLocation {
         Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         // Convert positions to WGS84 format.
-        int x = (int) (location.getLatitude() * 1000000);
-        int y = (int) (location.getLongitude() * 1000000);
+        int x = (int) (location.getLongitude() * 1000000);
+        int y = (int) (location.getLatitude() * 1000000);
 
         // Return new point with x and y.
         return new Address(activity.getString(R.string.my_location), x, y);
