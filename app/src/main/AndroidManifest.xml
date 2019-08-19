@@ -21,6 +21,10 @@
             android:label="@string/connections_title"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".views.connection.ConnectionListActivity"
+            android:label="@string/trip_title"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".views.contacts.ContactsEditorActivity"
             android:label="@string/create_contacts_title"
             android:theme="@style/AppTheme" />

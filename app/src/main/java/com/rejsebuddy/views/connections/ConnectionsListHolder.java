@@ -1,6 +1,7 @@
 package com.rejsebuddy.views.connections;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,6 +11,7 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.Connection;
 import com.rejsebuddy.api.models.ConnectionStep;
 import com.rejsebuddy.api.models.ConnectionStepPoint;
+import com.rejsebuddy.views.connection.ConnectionListActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +19,11 @@ import java.util.List;
 import java.util.Locale;
 
 class ConnectionsListHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    /**
+     * The connection instance.
+     */
+    private Connection connection;
 
     /**
      * The connection end time text view.
@@ -63,7 +70,13 @@ class ConnectionsListHolder extends RecyclerView.ViewHolder implements View.OnCl
      * @param view The current view.
      */
     public void onClick(View view) {
-        // TODO: Handle single tap
+        // Get context from view.
+        Context ctx = view.getContext();
+
+        // Start activity with to address.
+        Intent intent = new Intent(ctx, ConnectionListActivity.class);
+        intent.putExtra("CONNECTION", this.connection);
+        ctx.startActivity(intent);
     }
 
     /**
@@ -72,6 +85,9 @@ class ConnectionsListHolder extends RecyclerView.ViewHolder implements View.OnCl
      * @param connection The list row connection.
      */
     public void setConnection(Connection connection) {
+        // Save the connection instance.
+        this.connection = connection;
+
         // Skip if steps is empty.
         List<ConnectionStep> steps = connection.getSteps();
         if (steps.isEmpty()) return;

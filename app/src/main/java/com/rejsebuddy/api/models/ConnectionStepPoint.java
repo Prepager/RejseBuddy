@@ -1,9 +1,10 @@
 package com.rejsebuddy.api.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @SuppressWarnings("unused")
-public class ConnectionStepPoint {
+public class ConnectionStepPoint implements Serializable {
 
     /**
      * The name of the point.

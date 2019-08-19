@@ -1,9 +1,10 @@
 package com.rejsebuddy.api.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 @SuppressWarnings("unused")
-public class Connection {
+public class Connection implements Serializable {
 
     /**
      * The cancelled status of the connection.

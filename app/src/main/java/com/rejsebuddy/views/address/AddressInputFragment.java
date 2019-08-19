@@ -82,7 +82,7 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
         try {
             this.listener = (OnAddressChangeListener) ctx;
         } catch (Exception e) {
-            e.printStackTrace();
+            // Left blank intentionally.
         }
     }
 

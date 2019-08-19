@@ -49,6 +49,8 @@ public class GetConnectionsTask<Instance> extends AsyncWrapper<Address, List<Con
             int type = parser.getEventType();
 
             // Prepare temporary variables.
+            String name = "";
+            String notes = "";
             boolean cancelled = false;
             List<ConnectionStep> steps = new ArrayList<>();
             ConnectionStepPoint origin = null;
@@ -64,6 +66,16 @@ public class GetConnectionsTask<Instance> extends AsyncWrapper<Address, List<Con
                         case "Trip":
                             String value = parser.getAttributeValue(null, "cancelled");
                             cancelled = value != null && value.equals("true");
+                            break;
+
+                        // Parse the leg tag.
+                        case "Leg":
+                            name = parser.getAttributeValue(null, "name");
+                            break;
+
+                        // Parse the notes tag.
+                        case "Notes":
+                            notes = parser.getAttributeValue(null, "text");
                             break;
 
                         // Parse origin and destination tag.
@@ -98,7 +110,7 @@ public class GetConnectionsTask<Instance> extends AsyncWrapper<Address, List<Con
                     switch (parser.getName()) {
                         // Parse leg tag.
                         case "Leg":
-                            steps.add(new ConnectionStep(origin, destination));
+                            steps.add(new ConnectionStep(name, notes, origin, destination));
                             break;
 
                         // Parse trip tag.
