@@ -1,7 +1,6 @@
 package com.rejsebuddy.api.tasks;
 
 import android.content.Context;
-import android.util.Pair;
 
 import com.rejsebuddy.api.Consumer;
 import com.rejsebuddy.api.models.Address;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-abstract public class GetConnectionsTask<Instance> extends AsyncWrapper<Pair<Address, Address>, List<Connection>, Instance> {
+public class GetConnectionsTask<Instance> extends AsyncWrapper<Address, List<Connection>, Instance> {
 
     /**
      * Call parent super constructor.
@@ -25,25 +24,25 @@ abstract public class GetConnectionsTask<Instance> extends AsyncWrapper<Pair<Add
      * @param ctx The application context.
      * @param instance The current class instance.
      */
-    public GetConnectionsTask(Context ctx, Instance instance) {
+    protected GetConnectionsTask(Context ctx, Instance instance) {
         super(ctx, instance);
     }
 
     /**
      * Fetches and returns locations for passed search.
      *
-     * @param pairs The pair to be fetched.
+     * @param addresses The addresses to be fetched.
      * @return The fetched locations.
      */
     @Override
-    public List<Connection> doInBackground(Pair<Address, Address>... pairs) {
+    public List<Connection> doInBackground(Address... addresses) {
         // Create new results holder list.
         List<Connection> result = new ArrayList<>();
 
         // Attempt to fetch connections for pairs.
         try {
             // Request connections for address pair.
-            XmlPullParser parser = new Consumer().getConnections(pairs[0].first, pairs[0].second);
+            XmlPullParser parser = new Consumer().getConnections(addresses[0], addresses[1]);
             parser.next();
 
             // Get the current tag type.

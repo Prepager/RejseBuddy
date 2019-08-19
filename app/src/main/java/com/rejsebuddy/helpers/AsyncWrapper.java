@@ -11,12 +11,12 @@ public abstract class AsyncWrapper<Params, Result, Instance> extends AsyncTask<P
      * Weak referenced context to prevent leak.
      * Async may run longer than activity making it not get garbage collected.
      */
-    protected WeakReference<Context> ctx;
+    private final WeakReference<Context> ctx;
 
     /**
      * Weak reference for the current class.
      */
-    protected WeakReference<Instance> instance;
+    private final WeakReference<Instance> instance;
 
     /**
      * Save weak referenced context.
@@ -24,7 +24,7 @@ public abstract class AsyncWrapper<Params, Result, Instance> extends AsyncTask<P
      * @param ctx The application context.
      * @param instance The current class instance.
      */
-    public AsyncWrapper(Context ctx, Instance instance) {
+    protected AsyncWrapper(Context ctx, Instance instance) {
         this.ctx = new WeakReference<>(ctx);
         this.instance = new WeakReference<>(instance);
     }

@@ -13,6 +13,7 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.contact.tasks.CreateOrUpdateContactTask;
+import com.rejsebuddy.storage.contact.tasks.DeleteContactTask;
 import com.rejsebuddy.storage.contact.tasks.FindContactTask;
 import com.rejsebuddy.views.address.AddressInputFragment;
 
@@ -37,6 +38,11 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
      * The activity save button.
      */
     private Button save;
+
+    /**
+     * The activity delete button.
+     */
+    private Button delete;
 
     /**
      * The address input fragment.
@@ -73,6 +79,10 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
         // Bind save contact button.
         this.save = findViewById(R.id.save);
         this.save.setOnClickListener(this);
+
+        // Bind delete contact button.
+        this.delete = findViewById(R.id.delete);
+        this.delete.setOnClickListener(this);
     }
 
     /**
@@ -87,11 +97,33 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
     }
 
     /**
-     * Saves the contacts changes.
+     * Saves or deletes the contact.
      *
      * @param view The activity view.
      */
     public void onClick(View view) {
+        if (view == this.delete) {
+            this.deleteContact();
+        } else {
+            this.saveContact();
+        }
+    }
+
+    /**
+     * Deletes the contact.
+     */
+    private void deleteContact() {
+        // Delete contact from database.
+        new DeleteContactTask<Void>(this, null).execute(this.contact);
+
+        // Return back to previous view.
+        this.onSupportNavigateUp();
+    }
+
+    /**
+     * Saves the contacts changes.
+     */
+    private void saveContact() {
         // Get the name input text.
         String name = this.nameInput.getText().toString();
         if (name.equals("")) {
@@ -185,10 +217,13 @@ public class ContactsEditorActivity extends AppCompatActivity implements View.On
             // Update the action bar title with name.
             instance.getSupportActionBar().setTitle(result.getName());
 
-            // Set text on inputs and enable save.
+            // Set data on text inputs.
             instance.nameInput.setText(result.getName());
-            instance.addressInput.setAddress(result.getAddressIntance());
+            instance.addressInput.setAddress(result.getAddressInstance());
+
+            // Enable and show buttons.
             instance.save.setEnabled(true);
+            instance.delete.setVisibility(View.VISIBLE);
         }
 
     }

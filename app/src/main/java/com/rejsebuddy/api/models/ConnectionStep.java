@@ -1,5 +1,6 @@
 package com.rejsebuddy.api.models;
 
+@SuppressWarnings("unused")
 public class ConnectionStep {
 
     /**
@@ -16,7 +17,7 @@ public class ConnectionStep {
      * Initiates the class with the data.
      *
      * @param origin The connection step origin.
-     * @param origin The connection step destination.
+     * @param destination The connection step destination.
      */
     public ConnectionStep(ConnectionStepPoint origin, ConnectionStepPoint destination) {
         this.origin = origin;

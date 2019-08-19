@@ -2,6 +2,7 @@ package com.rejsebuddy.api.models;
 
 import java.util.Date;
 
+@SuppressWarnings("unused")
 public class ConnectionStepPoint {
 
     /**

@@ -2,6 +2,7 @@ package com.rejsebuddy.api.models;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Connection {
 
     /**

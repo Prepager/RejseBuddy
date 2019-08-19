@@ -11,7 +11,7 @@ import org.xmlpull.v1.XmlPullParser;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract public class SearchLocationsTask<Instance> extends AsyncWrapper<String, List<Address>, Instance> {
+public class SearchLocationsTask<Instance> extends AsyncWrapper<String, List<Address>, Instance> {
 
     /**
      * Call parent super constructor.
@@ -19,7 +19,7 @@ abstract public class SearchLocationsTask<Instance> extends AsyncWrapper<String,
      * @param ctx The application context.
      * @param instance The current class instance.
      */
-    public SearchLocationsTask(Context ctx, Instance instance) {
+    protected SearchLocationsTask(Context ctx, Instance instance) {
         super(ctx, instance);
     }
 

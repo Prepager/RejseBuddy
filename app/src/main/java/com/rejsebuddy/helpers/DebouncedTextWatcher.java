@@ -9,21 +9,16 @@ import java.util.TimerTask;
 public abstract class DebouncedTextWatcher implements TextWatcher {
 
     /**
-     * The debouncer timer instance.
+     * The debounce timer instance.
      */
     private Timer timer;
-
-    /**
-     * The debouncer delay time.
-     */
-    private int delay = 250;
 
     /**
      * Called before the text sequence is changed.
      *
      * @param sequence The current char sequence.
-     * @param before
-     * @param start
+     * @param before The chars before.
+     * @param start The start position.
      * @param count The amount of characters.
      */
     @Override
@@ -35,8 +30,8 @@ public abstract class DebouncedTextWatcher implements TextWatcher {
      * Cancels the current countdown timer on change.
      *
      * @param sequence The current char sequence.
-     * @param start
-     * @param before
+     * @param start The start position.
+     * @param before The chars before.
      * @param count The amount of characters.
      */
     @Override
@@ -64,7 +59,7 @@ public abstract class DebouncedTextWatcher implements TextWatcher {
                 // Call text changed function.
                 textChanged(editable.toString());
             }
-        }, this.delay);
+        }, 250);
     }
 
     /**
@@ -72,5 +67,5 @@ public abstract class DebouncedTextWatcher implements TextWatcher {
      *
      * @param str The final text string.
      */
-    public abstract void textChanged(String str);
+    protected abstract void textChanged(String str);
 }

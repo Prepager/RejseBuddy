@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.rejsebuddy.R;
@@ -39,7 +40,7 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
      * @return The inflated fragment view.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         return inflater.inflate(R.layout.fragment_address_input, container, false);
     }
 
@@ -50,7 +51,7 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
      * @param state The previous view state.
      */
     @Override
-    public void onViewCreated(View view, Bundle state) {
+    public void onViewCreated(@NonNull View view, Bundle state) {
         // Call super class.
         super.onViewCreated(view, state);
 
@@ -75,12 +76,14 @@ public class AddressInputFragment extends Fragment implements AdapterView.OnItem
      * @param ctx The application context.
      */
     @Override
-    public void onAttach(Context ctx) {
+    public void onAttach(@NonNull Context ctx) {
         super.onAttach(ctx);
 
         try {
             this.listener = (OnAddressChangeListener) ctx;
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

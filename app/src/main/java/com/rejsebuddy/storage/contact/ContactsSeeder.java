@@ -2,6 +2,7 @@ package com.rejsebuddy.storage.contact;
 
 import com.rejsebuddy.storage.AppDatabase;
 
+@SuppressWarnings("SpellCheckingInspection")
 public class ContactsSeeder {
 
     /**

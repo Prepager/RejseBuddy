@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -17,6 +18,7 @@ import com.rejsebuddy.helpers.UserLocation;
 import com.rejsebuddy.views.address.AddressInputFragment;
 import com.rejsebuddy.views.connections.ConnectionsListActivity;
 
+@SuppressWarnings("FieldCanBeLocal")
 class LandingFragment extends Fragment implements View.OnClickListener, AddressInputFragment.OnAddressChangeListener {
 
     /**
@@ -53,7 +55,7 @@ class LandingFragment extends Fragment implements View.OnClickListener, AddressI
      * @return The inflated fragment view.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         return inflater.inflate(R.layout.fragment_landing, container, false);
     }
 
@@ -64,7 +66,7 @@ class LandingFragment extends Fragment implements View.OnClickListener, AddressI
      * @param state The previous view state.
      */
     @Override
-    public void onViewCreated(View view, Bundle state) {
+    public void onViewCreated(@NonNull View view, Bundle state) {
         // Call super class.
         super.onViewCreated(view, state);
 

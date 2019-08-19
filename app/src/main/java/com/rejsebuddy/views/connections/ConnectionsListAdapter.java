@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
@@ -11,7 +12,7 @@ import com.rejsebuddy.api.models.Connection;
 
 import java.util.List;
 
-public class ConnectionsListAdapter extends RecyclerView.Adapter<ConnectionsListHolder> {
+class ConnectionsListAdapter extends RecyclerView.Adapter<ConnectionsListHolder> {
 
     /**
      * The list of found connections.
@@ -34,8 +35,9 @@ public class ConnectionsListAdapter extends RecyclerView.Adapter<ConnectionsList
      * @param type The view type of the new View.
      * @return View holder of the connection row.
      */
+    @NonNull
     @Override
-    public ConnectionsListHolder onCreateViewHolder(ViewGroup parent, int type) {
+    public ConnectionsListHolder onCreateViewHolder(@NonNull ViewGroup parent, int type) {
         // Inflate the connection row view.
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.row_connection, parent, false);
@@ -45,13 +47,13 @@ public class ConnectionsListAdapter extends RecyclerView.Adapter<ConnectionsList
     }
 
     /**
-     * Populates the row once fully binded.
+     * Populates the row once fully bound.
      *
      * @param holder The view holder.
      * @param index The index of the current view.
      */
     @Override
-    public void onBindViewHolder(ConnectionsListHolder holder, int index) {
+    public void onBindViewHolder(@NonNull ConnectionsListHolder holder, int index) {
         holder.setConnection(this.connections.get(index));
     }
 

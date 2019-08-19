@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
@@ -11,7 +12,7 @@ import com.rejsebuddy.storage.contact.Contact;
 
 import java.util.List;
 
-public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListHolder> {
+class ContactsListAdapter extends RecyclerView.Adapter<ContactsListHolder> {
 
     /**
      * The list of passed contacts.
@@ -34,8 +35,9 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListHolder
      * @param type The view type of the new View.
      * @return View holder of the contact row.
      */
+    @NonNull
     @Override
-    public ContactsListHolder onCreateViewHolder(ViewGroup parent, int type) {
+    public ContactsListHolder onCreateViewHolder(@NonNull ViewGroup parent, int type) {
         // Inflate the contact row view.
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.row_contact, parent, false);
@@ -45,13 +47,13 @@ public class ContactsListAdapter extends RecyclerView.Adapter<ContactsListHolder
     }
 
     /**
-     * Populates the row once fully binded.
+     * Populates the row once fully bound.
      *
      * @param holder The view holder.
      * @param index The index of the current view.
      */
     @Override
-    public void onBindViewHolder(ContactsListHolder holder, int index) {
+    public void onBindViewHolder(@NonNull ContactsListHolder holder, int index) {
         holder.setContact(contacts.get(index));
     }
 

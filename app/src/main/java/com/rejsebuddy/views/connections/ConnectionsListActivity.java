@@ -2,7 +2,6 @@ package com.rejsebuddy.views.connections;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Pair;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +16,7 @@ import com.rejsebuddy.helpers.UserLocation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ConnectionsListActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -33,7 +33,7 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
     /**
      * The list of found connections.
      */
-    private List<Connection> connections = new ArrayList<>();
+    private final List<Connection> connections = new ArrayList<>();
 
     /**
      * The connections data adapter.
@@ -57,7 +57,7 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
         setContentView(R.layout.activity_connections);
 
         // Enable the return button.
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         // Get to/from addresses from intent.
         this.to = (Address) getIntent().getSerializableExtra("TO_ADDRESS");
@@ -106,8 +106,7 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
      * Populate the connections list on refresh.
      */
     public void onRefresh() {
-        Pair<Address, Address> pair = new Pair<>(this.from, this.to);
-        new GetConnections(this, this).execute(pair);
+        new GetConnections(this, this).execute(this.from, this.to);
     }
 
     /**

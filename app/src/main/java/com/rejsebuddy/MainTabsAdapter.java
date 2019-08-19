@@ -3,6 +3,7 @@ package com.rejsebuddy;
 import android.content.Context;
 import android.util.Pair;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -55,6 +56,7 @@ class MainTabsAdapter extends FragmentStatePagerAdapter {
      * @param index The index of the requested tab.
      * @return The new instance of the requested tab.
      */
+    @NonNull
     @Override
     public Fragment getItem(int index) {
         try {

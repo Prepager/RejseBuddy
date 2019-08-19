@@ -2,6 +2,7 @@ package com.rejsebuddy.api.models;
 
 import java.io.Serializable;
 
+@SuppressWarnings("unused")
 public class Address implements Serializable {
 
     /**

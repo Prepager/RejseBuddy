@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey;
 
 import com.rejsebuddy.api.models.Address;
 
+@SuppressWarnings("WeakerAccess")
 @Entity
 public class Contact {
 
@@ -151,7 +152,7 @@ public class Contact {
     /**
      * Returns new address instance.
      */
-    public Address getAddressIntance() {
+    public Address getAddressInstance() {
         return new Address(this.address, this.addrx, this.addry);
     }
 

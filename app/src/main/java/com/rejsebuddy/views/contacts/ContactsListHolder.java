@@ -20,7 +20,7 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
     private int id;
 
     /**
-     * The contact addresse.
+     * The contact address.
      */
     private Address address;
 
@@ -92,7 +92,7 @@ class ContactsListHolder extends RecyclerView.ViewHolder implements View.OnClick
      */
     public void setContact(Contact contact) {
         this.id = contact.getId();
-        this.address = contact.getAddressIntance();
+        this.address = contact.getAddressInstance();
 
         this.nameText.setText(contact.getName());
         this.addressText.setText(contact.getAddress());

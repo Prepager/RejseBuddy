@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +47,7 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
      * @return The inflated fragment view.
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle state) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle state) {
         return inflater.inflate(R.layout.fragment_contacts_list, container, false);
     }
 
@@ -57,7 +58,7 @@ public class ContactsListFragment extends Fragment implements View.OnClickListen
      * @param state The previous view state.
      */
     @Override
-    public void onViewCreated(View view, Bundle state) {
+    public void onViewCreated(@NonNull View view, Bundle state) {
         // Call super class.
         super.onViewCreated(view, state);
 

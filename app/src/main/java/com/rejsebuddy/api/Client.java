@@ -10,12 +10,13 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@SuppressWarnings("FieldCanBeLocal")
 class Client {
 
     /**
      * The base url of the api interface.
      */
-    private String baseURL = "http://xmlopen.rejseplanen.dk/bin/rest.exe";
+    private final String baseURL = "http://xmlopen.rejseplanen.dk/bin/rest.exe";
 
     /**
      * Fetch a passed URL address.
@@ -57,7 +58,7 @@ class Client {
      * @param address The URL address to be parsed.
      * @return The XML parser instance.
      */
-    public XmlPullParser request(String address) throws XmlPullParserException, IOException {
+    XmlPullParser request(String address) throws XmlPullParserException, IOException {
         return this.parse(this.fetch(address));
     }
 

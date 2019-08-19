@@ -6,9 +6,7 @@ import com.rejsebuddy.helpers.AsyncWrapper;
 import com.rejsebuddy.storage.AppDatabase;
 import com.rejsebuddy.storage.contact.Contact;
 
-import java.util.List;
-
-public class GetContactsTask<Instance> extends AsyncWrapper<Void, List<Contact>, Instance> {
+public class DeleteContactTask<Instance> extends AsyncWrapper<Contact, Void, Instance> {
 
     /**
      * Call parent super constructor.
@@ -16,18 +14,19 @@ public class GetContactsTask<Instance> extends AsyncWrapper<Void, List<Contact>,
      * @param ctx The application context.
      * @param instance The current class instance.
      */
-    protected GetContactsTask(Context ctx, Instance instance) {
+    public DeleteContactTask(Context ctx, Instance instance) {
         super(ctx, instance);
     }
 
     /**
-     * Fetches and returns all contacts from database.
+     * Deletes contact for passed instance.
      *
-     * @return List of fetched contacts.
+     * @param contacts The contact to be deleted.
      */
     @Override
-    public List<Contact> doInBackground(Void... voids) {
-        return AppDatabase.getInstance(this.getContext()).contacts().all();
+    public Void doInBackground(Contact... contacts) {
+        AppDatabase.getInstance(this.getContext()).contacts().delete(contacts[0]);
+        return null;
     }
 
 }
