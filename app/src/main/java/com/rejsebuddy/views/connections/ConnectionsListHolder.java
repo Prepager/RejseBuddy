@@ -14,7 +14,6 @@ import com.rejsebuddy.api.models.ConnectionStepPoint;
 import com.rejsebuddy.views.connection.ConnectionListActivity;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 

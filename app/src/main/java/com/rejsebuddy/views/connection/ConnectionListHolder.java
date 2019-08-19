@@ -1,6 +1,5 @@
 package com.rejsebuddy.views.connection;
 
-import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,7 +9,6 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.ConnectionStep;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 class ConnectionListHolder extends RecyclerView.ViewHolder {

@@ -26,7 +26,6 @@ class Client {
      */
     private InputStream fetch(String address) throws IOException {
         // Create new request URL address.
-        System.out.println(this.baseURL + address);
         URL url = new URL(this.baseURL + address);
 
         // Create new connection and connect.
