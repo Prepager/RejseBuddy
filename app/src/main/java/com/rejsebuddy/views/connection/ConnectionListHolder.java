@@ -74,7 +74,7 @@ class ConnectionListHolder extends RecyclerView.ViewHolder {
 
         // Set view text element text.
         this.name.setText(step.getName());
-        this.notes.setText(step.getNotes());
+        this.notes.setText(step.getNotes().replace(";", " "));
         this.origin_name.setText(step.getOrigin().getName());
         this.origin_time.setText(formatter.format(step.getOrigin().getDate()));
         this.destination_name.setText(step.getDestination().getName());

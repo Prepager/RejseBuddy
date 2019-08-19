@@ -102,12 +102,19 @@ class ConnectionsListHolder extends RecyclerView.ViewHolder implements View.OnCl
         // Get the current view context.
         Context ctx = this.itemView.getContext();
 
+        // Find difference in hours and minutes.
+        long diff = end.getDate().getTime() - start.getDate().getTime();
+        long hours = diff / (1000 * 60 * 60) % 24;
+        diff -=  hours * (1000 * 60 * 60);
+        long minutes = diff / (1000 * 60) % 60;
+
+        // Format hours and minutes as time.
+        String duration = String.format(Locale.UK, "%02d:%02d", hours, minutes);
+
         // Set view text element text.
         this.end_time.setText(formatter.format(end.getDate()));
         this.start_time.setText(formatter.format(start.getDate()));
         this.changes.setText(ctx.getString(R.string.amount_changes, steps.size() - 1));
-        this.duration.setText(ctx.getString(R.string.amount_duration, formatter.format(
-            new Date(end.getDate().getTime() - start.getDate().getTime()))
-        ));
+        this.duration.setText(ctx.getString(R.string.amount_duration, duration));
     }
 }
