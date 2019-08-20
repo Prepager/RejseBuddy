@@ -19,7 +19,7 @@
 
             <ImageView
                 android:id="@+id/logo"
-                android:maxHeight="48dp"
+                android:maxHeight="42dp"
                 android:scaleType="fitCenter"
                 android:adjustViewBounds="true"
                 android:layout_width="wrap_content"
