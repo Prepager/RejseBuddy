@@ -1,7 +1,6 @@
 package com.rejsebuddy.views.recents;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,17 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.rejsebuddy.R;
-import com.rejsebuddy.storage.contact.Contact;
-import com.rejsebuddy.storage.contact.tasks.GetContactsTask;
 import com.rejsebuddy.storage.recent.Recent;
 import com.rejsebuddy.storage.recent.tasks.GetRecentsTask;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentsListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+class RecentsListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     /**
      * The contacts data adapter.

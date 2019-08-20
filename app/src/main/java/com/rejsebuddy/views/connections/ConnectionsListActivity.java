@@ -13,7 +13,6 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.api.models.Connection;
 import com.rejsebuddy.api.tasks.GetConnectionsTask;
-import com.rejsebuddy.helpers.AsyncWrapper;
 import com.rejsebuddy.helpers.UserLocation;
 import com.rejsebuddy.storage.recent.Recent;
 import com.rejsebuddy.storage.recent.tasks.CreateRecentTask;

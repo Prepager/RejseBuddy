@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.rejsebuddy.helpers.AsyncWrapper;
 import com.rejsebuddy.storage.AppDatabase;
-import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.recent.Recent;
 
 import java.util.List;

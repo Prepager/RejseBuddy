@@ -2,11 +2,9 @@ package com.rejsebuddy.views.connections;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;

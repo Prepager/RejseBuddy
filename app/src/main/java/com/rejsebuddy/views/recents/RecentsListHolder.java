@@ -8,16 +8,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rejsebuddy.R;
-import com.rejsebuddy.api.models.Connection;
-import com.rejsebuddy.api.models.ConnectionStep;
-import com.rejsebuddy.api.models.ConnectionStepPoint;
 import com.rejsebuddy.storage.recent.Recent;
-import com.rejsebuddy.views.connection.ConnectionListActivity;
 import com.rejsebuddy.views.connections.ConnectionsListActivity;
-
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
 
 class RecentsListHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

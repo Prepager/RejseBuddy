@@ -1,8 +1,6 @@
 package com.rejsebuddy.storage.recent;
 
 import com.rejsebuddy.storage.AppDatabase;
-import com.rejsebuddy.storage.contact.Contact;
-import com.rejsebuddy.storage.contact.ContactDao;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class RecentsSeeder {
