@@ -9,8 +9,11 @@ import androidx.room.RoomDatabase;
 import com.rejsebuddy.storage.contact.Contact;
 import com.rejsebuddy.storage.contact.ContactDao;
 import com.rejsebuddy.storage.contact.ContactsSeeder;
+import com.rejsebuddy.storage.recent.Recent;
+import com.rejsebuddy.storage.recent.RecentDao;
+import com.rejsebuddy.storage.recent.RecentsSeeder;
 
-@Database(entities = {Contact.class}, version = 1, exportSchema = false)
+@Database(entities = {Contact.class, Recent.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     /**
@@ -24,9 +27,15 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ContactDao contacts();
 
     /**
+     * Makes the recent trips data available.
+     */
+    public abstract RecentDao recents();
+
+    /**
      * Resets the entire database.
      */
     public void reset() {
+        this.recents().truncate();
         this.contacts().truncate();
     }
 
@@ -38,6 +47,7 @@ public abstract class AppDatabase extends RoomDatabase {
         this.reset();
 
         // Seed database example data.
+        RecentsSeeder.seed(this);
         ContactsSeeder.seed(this);
     }
 

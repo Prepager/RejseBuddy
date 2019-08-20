@@ -13,7 +13,10 @@ import com.rejsebuddy.R;
 import com.rejsebuddy.api.models.Address;
 import com.rejsebuddy.api.models.Connection;
 import com.rejsebuddy.api.tasks.GetConnectionsTask;
+import com.rejsebuddy.helpers.AsyncWrapper;
 import com.rejsebuddy.helpers.UserLocation;
+import com.rejsebuddy.storage.recent.Recent;
+import com.rejsebuddy.storage.recent.tasks.CreateRecentTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +91,9 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
         this.refresher.setOnRefreshListener(this);
         this.refresher.setRefreshing(true);
 
+        // Create recents entry.
+        this.createRecent();
+
         // Populate the connections list.
         this.onRefresh();
     }
@@ -134,6 +140,24 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
 
         // Refresh the view.
         this.onRefresh();
+
+        // Create recents entry.
+        this.createRecent();
+    }
+
+    /**
+     * Create recent entry for trip.
+     */
+    private void createRecent() {
+        // Skip if from address is missing.
+        if (this.from == null) return;
+
+        // Check if not fetched from recent list.
+        if (! getIntent().getBooleanExtra("RECENT", false)) {
+            // Create new recent in database.
+            Recent recent = new Recent(this.from, this.to);
+            new CreateRecentTask<>(this, this).execute(recent);
+        }
     }
 
     /**
