@@ -3,6 +3,7 @@ package com.rejsebuddy.views.connections;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,8 +64,8 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
         this.to = (Address) getIntent().getSerializableExtra("TO_ADDRESS");
         this.from = (Address) getIntent().getSerializableExtra("FROM_ADDRESS");
 
-        // Keep requesting location if not passed.
-        while (this.from == null) {
+        // Attempt to request location if not passed.
+        if (this.from == null) {
             try {
                 this.from = new UserLocation().request(this, this);
             } catch (Exception e) {
@@ -106,7 +107,33 @@ public class ConnectionsListActivity extends AppCompatActivity implements SwipeR
      * Populate the connections list on refresh.
      */
     public void onRefresh() {
+        // Skip if to or from is missing.
+        if (this.from == null || this.to == null) {
+            return;
+        }
+
+        // Get connections async.
         new GetConnections(this, this).execute(this.from, this.to);
+    }
+
+    /**
+     * Listen for permission request results.
+     *
+     * @param request The request code passed when requested.
+     * @param permissions The list of requested permissions.
+     * @param results The list of results for the requested permissions.
+     */
+    @Override
+    public void onRequestPermissionsResult(int request, @NonNull String[] permissions, @NonNull int[] results) {
+        // Attempt to request user location.
+        try {
+            this.from = new UserLocation().request(this, this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Refresh the view.
+        this.onRefresh();
     }
 
     /**
